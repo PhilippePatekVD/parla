@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#f6f3ec"/>
+<path d="M64 80h128v352H64z" fill="#176b4f"/><path d="M320 80h128v352H320z" fill="#a43d3d"/>
+<circle cx="256" cy="256" r="105" fill="#202720"/>
+<text x="256" y="294" text-anchor="middle" font-family="Arial,sans-serif" font-size="116" font-weight="800" fill="#fff">P!</text>
+</svg>
