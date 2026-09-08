@@ -2,15 +2,15 @@
 "use strict";
 
 window.PARLA_COURSE={
-  version:"2.0",
+  version:"2.0-A1",
   lang:"it",
   locale:"it-IT",
   name:"Parla! Italiano",
-  subtitle:"Italiano Coach · Fondations → A2",
+  subtitle:"Italiano Coach · A1",
   logoLetter:"I",
   hero:"Impara davvero l’italiano.",
   intro:"Un parcours guidé qui commence par le béaba, explique les mécanismes de la langue puis te fait écouter, construire, produire et réviser jusqu’à automatisation.",
-  maxLevel:"A2",
+  maxLevel:"A1",
   storageKey:"parla_it_v2",
   legacyStorageKeys:["parla_v1_1","parla_v1"],
   articleChoices:["il","lo","l'","la","i","gli","le","un","uno","una","un'"],
@@ -65,35 +65,8 @@ window.PARLA_COURSE={
       formation:"ho parlato / sono andato-a",
       examples:[{t:"Ho visto un film.",fr:"J’ai vu un film."},{t:"Sono arrivata ieri.",fr:"Je suis arrivée hier."}]
     },
-    {
-      level:"A2",
-      title:"Imperfetto",
-      body:"Il décrit une habitude, un état, un décor ou une action en cours dans le passé.",
-      formation:"parlavo, credevo, dormivo ; essere → ero, eri, era…",
-      examples:[{t:"Da piccolo vivevo a Roma.",fr:"Petit, je vivais à Rome."},{t:"Pioveva.",fr:"Il pleuvait."}]
-    },
-    {
-      level:"A2",
-      title:"Futuro semplice",
-      body:"Il exprime un futur plus explicite, une prévision ou parfois une supposition.",
-      formation:"parlerò, prenderai, dormirà ; radicaux irréguliers sar-, avr-, andr-, verr-…",
-      examples:[{t:"Domani lavorerò.",fr:"Demain je travaillerai."},{t:"Sarà tardi.",fr:"Il sera tard."}]
-    },
-    {
-      level:"A2",
-      title:"Condizionale presente",
-      body:"Il sert à demander poliment, exprimer un souhait, un conseil ou une possibilité.",
-      formation:"-ei, -esti, -ebbe, -emmo, -este, -ebbero",
-      examples:[{t:"Vorrei un caffè.",fr:"Je voudrais un café."},{t:"Dovresti riposare.",fr:"Tu devrais te reposer."}]
-    },
-    {
-      level:"A2",
-      title:"Stare + gerundio",
-      body:"Forme progressive pour insister sur une action en cours.",
-      formation:"stare au présent + -ando / -endo",
-      examples:[{t:"Sto lavorando.",fr:"Je suis en train de travailler."},{t:"Stiamo mangiando.",fr:"Nous sommes en train de manger."}]
     }
   ],
-  levels:[window.IT_FOUNDATION,window.IT_A1,window.IT_A2]
+  levels:[window.IT_FOUNDATION,window.IT_A1]
 };
 })();
