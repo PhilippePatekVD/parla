@@ -191,7 +191,14 @@ function questionsFor(ctx,stageId){
     const custom=encounterQuestions(ctx.unit),prod=bank.filter(q=>["production","listening","wordorder"].includes(q.skill));
     return uniqById([...custom,...shuffle(prod)]).slice(0,10);
   }
-  if(stageId==="checkpoint")return takeBalanced(bank,25,["grammar","conjugation","listening","production"]);
+  if(stageId==="checkpoint"){
+    const current=takeBalanced(bank,19,["grammar","conjugation","listening","production"]);
+    const previous=ALL_UNITS
+      .filter(x=>x.index<ctx.index)
+      .flatMap(x=>bankFor(x.unit));
+    const cumulative=previous.length?takeBalanced(previous,6,["grammar","listening","production"]):[];
+    return shuffle(uniqById([...current,...cumulative])).slice(0,25);
+  }
   return [];
 }
 function speak(text,rate=.87){
