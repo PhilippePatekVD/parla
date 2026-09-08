@@ -84,3 +84,16 @@ La PWA peut ensuite fonctionner hors ligne après une première visite réussie.
 - `legacy/index-v1.0.html` : archive de la version précédente
 
 Cette séparation permet d’ajouter plus tard A2 puis B1 sans réécrire le moteur.
+
+
+## Sprich! — Deutsch Coach
+
+Le même moteur pédagogique existe désormais pour l'allemand dans `/deutsch/`.
+
+- progression A1 indépendante
+- 12 unités / 48 leçons / 108 exercices
+- ordre du verbe, articles, accusatif, datif de base, modaux, verbes séparables et Perfekt
+- synthèse vocale native `de-DE`
+- stockage local séparé de Parla
+
+URL GitHub Pages : `/parla-italiano/deutsch/`
