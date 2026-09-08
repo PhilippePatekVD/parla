@@ -1,7 +1,8 @@
 const CACHE="parla-it-v2.0.0";
 const ASSETS=[
-  "./","./index.html","./foundation-v2.js","./a1-v2.js","./course-v2.js",
-  "../shared/styles-v2.css","../shared/core-v2.js","./manifest.json","./icon.svg"
+  "./","./index.html","./manifest.json","./icon.svg",
+  "./foundation-v2.js","./a1-v2.js","./a2-v2.js","./course-v2.js",
+  "../shared/styles-v2.css","../shared/core-v2.js"
 ];
 
 self.addEventListener("install",event=>{
@@ -11,7 +12,7 @@ self.addEventListener("install",event=>{
 self.addEventListener("activate",event=>{
   event.waitUntil(
     caches.keys()
-      .then(keys=>Promise.all(keys.filter(key=>key!==CACHE && (key.startsWith("parla-it-")||key.startsWith("parla-de-")||key.startsWith("sprich-de-"))).map(key=>caches.delete(key))))
+      .then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key))))
       .then(()=>self.clients.claim())
   );
 });
