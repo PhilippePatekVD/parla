@@ -64,7 +64,6 @@ window.PARLA_COURSE={
       body:"Temps du passé terminé, très utilisé à l’oral. Il se forme avec avere ou essere au présent + participe passé.",
       formation:"ho parlato / sono andato-a",
       examples:[{t:"Ho visto un film.",fr:"J’ai vu un film."},{t:"Sono arrivata ieri.",fr:"Je suis arrivée hier."}]
-    },
     }
   ],
   levels:[window.IT_FOUNDATION,window.IT_A1]
