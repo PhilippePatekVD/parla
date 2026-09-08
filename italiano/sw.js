@@ -1,4 +1,4 @@
-const CACHE="parla-v1.1.0";
+const CACHE="parla-italiano-v1.1.0";
 const ASSETS=["./","./index.html","./styles.css","./curriculum.js","./app.js","./manifest.json","./icon.svg"];
 
 self.addEventListener("install",event=>{
