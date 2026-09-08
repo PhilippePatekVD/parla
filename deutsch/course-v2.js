@@ -2,52 +2,60 @@
 "use strict";
 
 window.PARLA_COURSE={
-  version:"2.0-A1",
+  version:"2.0",
   lang:"de",
   locale:"de-DE",
   name:"Sprich! Deutsch",
-  subtitle:"Deutsch Coach · A1",
+  subtitle:"Deutsch Coach · Fondations → A2",
   logoLetter:"D",
-  hero:"Deutsch wirklich verstehen.",
-  intro:"Un parcours guidé depuis zéro : sons, ordre des mots, articles, cas, conjugaison, écoute et production jusqu’à une vraie autonomie A1.",
-  maxLevel:"A1",
-  storageKey:"sprich_de_v2",
+  hero:"Deutsch von Grund auf.",
+  intro:"Un parcours guidé qui commence par les sons et l’ordre de la phrase, puis introduit les articles, les cas, les verbes séparables, les temps et la production libre étape par étape.",
+  maxLevel:"A2",
+  storageKey:"parla_de_v2",
   legacyStorageKeys:["sprich_de_v1_0","sprich_de_v0"],
   allowGermanAscii:true,
-  articleChoices:["der","die","das","ein","eine","einen","einem","einer","den","dem"],
-  skillLabels:{cases:"Cas",wordorder:"Ordre des mots",tenses:"Temps verbaux"},
+  articleChoices:["der","die","das","den","dem","des","ein","eine","einen","einem","einer","kein","keine","keinen","keinem"],
+  skillLabels:{cases:"Cas",wordorder:"Ordre des mots"},
   articleGuide:[
     {
-      title:"Nominatif — sujet",
-      body:"Le nominatif sert notamment au sujet. Apprends chaque nom avec son genre : der, die ou das.",
-      headers:["Genre","Défini","Indéfini","Exemple"],
-      table:[
-        ["masculin","der","ein","der Mann / ein Mann"],
-        ["féminin","die","eine","die Frau / eine Frau"],
-        ["neutre","das","ein","das Kind / ein Kind"],
-        ["pluriel","die","—","die Kinder"]
-      ]
-    },
-    {
-      title:"Accusatif — objet direct",
-      body:"Le changement le plus visible est au masculin : der → den et ein → einen. Les autres genres gardent la même forme.",
-      headers:["Genre","Défini","Indéfini","Exemple"],
-      table:[
-        ["masculin","den","einen","Ich sehe den Mann."],
-        ["féminin","die","eine","Ich sehe die Frau."],
-        ["neutre","das","ein","Ich sehe das Kind."],
-        ["pluriel","die","—","Ich sehe die Kinder."]
-      ]
-    },
-    {
-      title:"Datif — premiers repères",
-      body:"Certaines prépositions comme mit, bei, von et zu imposent toujours le datif.",
+      title:"Articles définis — nominatif",
+      body:"Au nominatif : der masculin, die féminin, das neutre, die pluriel.",
       headers:["Genre","Article","Exemple"],
       table:[
-        ["masculin","dem","mit dem Bus"],
-        ["féminin","der","mit der Karte"],
-        ["neutre","dem","mit dem Kind"],
-        ["pluriel","den","mit den Freunden"]
+        ["masculin","der","der Mann"],
+        ["féminin","die","die Frau"],
+        ["neutre","das","das Kind"],
+        ["pluriel","die","die Kinder"]
+      ]
+    },
+    {
+      title:"Accusatif",
+      body:"Seul le masculin change nettement : der → den, ein → einen, kein → keinen.",
+      headers:["Genre","Défini","Indéfini"],
+      table:[
+        ["masculin","den","einen"],
+        ["féminin","die","eine"],
+        ["neutre","das","ein"],
+        ["pluriel","die","—"]
+      ]
+    },
+    {
+      title:"Datif",
+      body:"Au datif : dem masculin/neutre, der féminin, den au pluriel. ein devient einem/einer.",
+      headers:["Genre","Défini","Indéfini"],
+      table:[
+        ["masculin","dem","einem"],
+        ["féminin","der","einer"],
+        ["neutre","dem","einem"],
+        ["pluriel","den (+ souvent -n au nom)","—"]
+      ]
+    },
+    {
+      title:"Cas et rôle",
+      body:"Nominatif = sujet. Accusatif = objet direct. Datif = destinataire/complément régi par certains verbes ou prépositions.",
+      examples:[
+        {t:"Der Mann sieht den Hund.",fr:"L’homme voit le chien."},
+        {t:"Ich gebe dem Kind das Buch.",fr:"Je donne le livre à l’enfant."}
       ]
     }
   ],
@@ -55,25 +63,39 @@ window.PARLA_COURSE={
     {
       level:"Fondations",
       title:"Präsens",
-      body:"Le présent sert aux habitudes, aux faits actuels et très souvent au futur proche avec un repère temporel.",
-      formation:"radical + terminaisons ; verbes forts et irréguliers fréquents appris progressivement.",
-      examples:[{t:"Ich arbeite in Zürich.",fr:"Je travaille à Zurich."},{t:"Morgen fahre ich nach Bern.",fr:"Demain je vais à Berne."}]
+      body:"Le présent allemand sert au présent, aux habitudes et très souvent au futur lorsqu’un repère temporel est clair.",
+      formation:"radical + -e, -st, -t, -en, -t, -en ; nombreux verbes irréguliers.",
+      examples:[{t:"Ich arbeite heute.",fr:"Je travaille aujourd’hui."},{t:"Morgen fahre ich nach Bern.",fr:"Demain je vais à Berne."}]
     },
     {
       level:"A1",
-      title:"Perfekt mit haben",
-      body:"Le Perfekt est le temps oral principal pour raconter une action terminée. haben est conjugué et le participe va en fin de proposition.",
-      formation:"haben + Partizip II",
-      examples:[{t:"Ich habe gearbeitet.",fr:"J’ai travaillé."},{t:"Wir haben einen Film gesehen.",fr:"Nous avons vu un film."}]
+      title:"Perfekt",
+      body:"Passé principal de la langue parlée. haben ou sein conjugué + participe passé en fin de phrase.",
+      formation:"ich habe gearbeitet / ich bin gefahren",
+      examples:[{t:"Ich habe einen Film gesehen.",fr:"J’ai vu un film."},{t:"Ich bin nach Berlin gefahren.",fr:"Je suis allé à Berlin."}]
     },
     {
-      level:"A1",
-      title:"Perfekt mit sein",
-      body:"Plusieurs verbes de déplacement et de changement utilisent sein, notamment gehen, kommen, fahren et ankommen.",
-      formation:"sein + Partizip II",
-      examples:[{t:"Ich bin nach Berlin gefahren.",fr:"Je suis allé à Berlin."},{t:"Wir sind angekommen.",fr:"Nous sommes arrivés."}]
+      level:"A2",
+      title:"Präteritum",
+      body:"Très fréquent avec sein, haben et les modaux à l’oral ; plus largement utilisé à l’écrit narratif.",
+      formation:"war, hatte, konnte, musste, wollte…",
+      examples:[{t:"Ich war müde.",fr:"J’étais fatigué."},{t:"Ich konnte nicht kommen.",fr:"Je ne pouvais pas venir."}]
+    },
+    {
+      level:"A2",
+      title:"Futur I",
+      body:"Exprime un futur explicite, une intention ou une supposition. Le présent reste souvent plus naturel pour un futur daté.",
+      formation:"werden conjugué + infinitif final",
+      examples:[{t:"Ich werde morgen arbeiten.",fr:"Je travaillerai demain."},{t:"Das wird gut.",fr:"Ce sera bien."}]
+    },
+    {
+      level:"A2",
+      title:"Subordonnée",
+      body:"Avec weil, dass ou une relative, le verbe conjugué se place à la fin de la subordonnée.",
+      formation:"..., weil ich müde bin / ..., dass er kommt",
+      examples:[{t:"Ich bleibe hier, weil ich müde bin.",fr:"Je reste ici parce que je suis fatigué."},{t:"Ich glaube, dass er kommt.",fr:"Je pense qu’il vient."}]
     }
   ],
-  levels:[window.DE_FOUNDATION,window.DE_A1]
+  levels:[window.DE_FOUNDATION,window.DE_A1,window.DE_A2]
 };
 })();
