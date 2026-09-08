@@ -1,0 +1,28 @@
+name: Assemble Parla v2 Core
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/assemble-v2.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Assemble shared core
+        run: |
+          cat             .build-v2/core.part1.js             .build-v2/core.part2.js             .build-v2/core.part3.js             .build-v2/core.part4.js             > shared/core-v2.js
+          node --check shared/core-v2.js
+      - name: Commit assembled core
+        run: |
+          git config user.name "Parla Migration"
+          git config user.email "parla@users.noreply.github.com"
+          git add shared/core-v2.js
+          git commit -m "Assemble shared Parla v2 learning engine"
+          git push
