@@ -4,24 +4,69 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Parla!">
-<meta name="description" content="Parla! — cours d'italien A1 progressif, local et gratuit.">
-<link rel="manifest" href="./manifest.json">
+<meta name="description" content="Parla! — choisissez votre langue et poursuivez votre apprentissage.">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icon.svg">
 <link rel="stylesheet" href="./styles.css">
-<title>Parla! — Italiano Coach</title>
+<title>Parla! — Language Hub</title>
 </head>
 <body>
-<div id="app"></div>
-<script src="./curriculum.js"></script>
-<script src="./app.js"></script>
-<script>
-if("serviceWorker" in navigator){
-  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-}
-</script>
+<main class="hub">
+  <header class="hub-top">
+    <div class="brand"><div class="mark">P</div><div><b>Parla!</b><span>Language Hub</span></div></div>
+    <div class="local">100 % local · 0 CHF</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Apprentissage des langues</div>
+    <h1>Une méthode.<br>Deux langues.</h1>
+    <p>Choisis ton parcours et reprends exactement là où tu t’étais arrêté. Chaque langue conserve sa progression, ses erreurs et ses révisions indépendamment.</p>
+  </section>
+
+  <section class="languages">
+    <a class="language-card italian" href="./italiano/">
+      <div class="card-head"><div class="flag">IT</div><span class="badge">A1 · 12 unités</span></div>
+      <div>
+        <div class="kicker">Italiano</div>
+        <h2>Parla!</h2>
+        <p>Grammaire, conjugaison, phrases, compréhension et production progressive.</p>
+      </div>
+      <div class="progress"><span id="itProgress" style="width:0%"></span></div>
+      <div class="metrics">
+        <div><b id="itPct">0 %</b><span>progression</span></div>
+        <div><b id="itXp">0</b><span>XP</span></div>
+        <div><b id="itStreak">0 j</b><span>série</span></div>
+        <div><b id="itDue">0</b><span>révisions</span></div>
+      </div>
+      <div class="open">Continuer en italien <span>→</span></div>
+    </a>
+
+    <a class="language-card german" href="./deutsch/">
+      <div class="card-head"><div class="flag de">DE</div><span class="badge">A1 · 12 unités</span></div>
+      <div>
+        <div class="kicker">Deutsch</div>
+        <h2>Sprich!</h2>
+        <p>Ordre des mots, articles, cas, verbes séparables, modaux et Perfekt.</p>
+      </div>
+      <div class="progress"><span id="deProgress" style="width:0%"></span></div>
+      <div class="metrics">
+        <div><b id="dePct">0 %</b><span>progression</span></div>
+        <div><b id="deXp">0</b><span>XP</span></div>
+        <div><b id="deStreak">0 j</b><span>série</span></div>
+        <div><b id="deDue">0</b><span>révisions</span></div>
+      </div>
+      <div class="open">Continuer en allemand <span>→</span></div>
+    </a>
+  </section>
+
+  <section class="principles">
+    <div><b>Découvrir</b><span>Comprendre la structure avant de mémoriser.</span></div>
+    <div><b>Construire</b><span>Manipuler immédiatement grammaire et conjugaison.</span></div>
+    <div><b>Parler</b><span>Produire des phrases et réagir en situation.</span></div>
+    <div><b>Réviser</b><span>Faire revenir les notions qui posent réellement problème.</span></div>
+  </section>
+
+  <footer>Parla! · apprentissage local · aucune API payante · données conservées sur cet appareil</footer>
+</main>
+<script src="./hub.js"></script>
 </body>
 </html>
