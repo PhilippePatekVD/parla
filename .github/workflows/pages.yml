@@ -28,20 +28,30 @@ jobs:
           node --check curriculum.js
           node --check app.js
           node --check sw.js
+          node --check deutsch/curriculum.js
+          node --check deutsch/app.js
+          node --check deutsch/sw.js
           python - <<'PY'
           from pathlib import Path
           import json
           import re
 
           json.loads(Path("manifest.json").read_text(encoding="utf-8"))
-          html = Path("index.html").read_text(encoding="utf-8")
-          required = ["styles.css", "curriculum.js", "app.js", "manifest.json", "icon.svg"]
-          missing = [name for name in required if not Path(name).exists()]
-          if missing:
-              raise SystemExit(f"Missing assets: {missing}")
-          if 'id="app"' not in html:
-              raise SystemExit("Missing app root")
-          print("Parla v1.1 static checks passed")
+          json.loads(Path("deutsch/manifest.json").read_text(encoding="utf-8"))
+
+          apps = {
+              "Parla": Path("."),
+              "Sprich": Path("deutsch"),
+          }
+          required = ["index.html", "styles.css", "curriculum.js", "app.js", "manifest.json", "icon.svg", "sw.js"]
+          for name, root in apps.items():
+              missing = [asset for asset in required if not (root / asset).exists()]
+              if missing:
+                  raise SystemExit(f"{name}: missing assets {missing}")
+              html = (root / "index.html").read_text(encoding="utf-8")
+              if 'id="app"' not in html:
+                  raise SystemExit(f"{name}: missing app root")
+          print("Parla + Sprich static checks passed")
           PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
