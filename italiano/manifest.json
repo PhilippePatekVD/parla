@@ -1,7 +1,7 @@
 {
-  "name": "Parla! Italiano — Fondations à A2",
+  "name": "Parla! Italiano — A1",
   "short_name": "Parla! Italiano",
-  "description": "Cours structuré d'italien : immersion, grammaire, conjugaison, articles, exercices, production et révisions.",
+  "description": "Cours A1 d'italien structuré : immersion, grammaire, conjugaison, articles, écoute, production et révisions.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
