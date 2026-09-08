@@ -31,20 +31,16 @@ jobs:
           node --check shared/core-v2.js
           node --check italiano/foundation-v2.js
           node --check italiano/a1-v2.js
-          node --check italiano/a2-v2.js
           node --check italiano/course-v2.js
           node --check italiano/sw.js
           node --check deutsch/foundation-v2.js
           node --check deutsch/a1-v2.js
-          node --check deutsch/a2-v2.js
           node --check deutsch/course-v2.js
           node --check deutsch/sw.js
-          node --check tests/validate-v2.js
+          node --check scripts/validate-courses.js
 
       - name: Validate curricula
-        run: |
-          node tests/validate-v2.js italiano it
-          node tests/validate-v2.js deutsch de
+        run: node scripts/validate-courses.js
 
       - name: Validate static application
         run: |
@@ -60,19 +56,12 @@ jobs:
               if route not in hub:
                   raise SystemExit(f"Hub missing route {route}")
 
-          shared = ["shared/core-v2.js", "shared/styles-v2.css"]
-          for asset in shared:
+          for asset in ("shared/core-v2.js", "shared/styles-v2.css"):
               if not Path(asset).exists():
                   raise SystemExit(f"Missing shared asset {asset}")
 
-          required = [
-              "index.html", "foundation-v2.js", "a1-v2.js", "a2-v2.js",
-              "course-v2.js", "manifest.json", "icon.svg", "sw.js"
-          ]
-          loaded = [
-              "foundation-v2.js", "a1-v2.js", "a2-v2.js",
-              "course-v2.js", "../shared/core-v2.js", "../shared/styles-v2.css"
-          ]
+          required = ["index.html","foundation-v2.js","a1-v2.js","course-v2.js","manifest.json","icon.svg","sw.js"]
+          loaded = ["foundation-v2.js","a1-v2.js","course-v2.js","../shared/core-v2.js","../shared/styles-v2.css"]
 
           for name, root in {"Italiano": Path("italiano"), "Deutsch": Path("deutsch")}.items():
               missing = [asset for asset in required if not (root / asset).exists()]
@@ -84,8 +73,10 @@ jobs:
               for asset in loaded:
                   if asset not in html:
                       raise SystemExit(f"{name}: {asset} not loaded")
+              if "a2-v2.js" in html:
+                  raise SystemExit(f"{name}: A2 must not be loaded during A1 phase")
 
-          print("Parla Hub + Italiano v2 + Deutsch v2 static checks passed")
+          print("Parla Hub + Italiano A1 + Deutsch A1 static checks passed")
           PY
 
       - name: Configure Pages
