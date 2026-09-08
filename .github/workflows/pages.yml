@@ -23,6 +23,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Validate application
+        run: |
+          node --check curriculum.js
+          node --check app.js
+          node --check sw.js
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          json.loads(Path("manifest.json").read_text(encoding="utf-8"))
+          html = Path("index.html").read_text(encoding="utf-8")
+          required = ["styles.css", "curriculum.js", "app.js", "manifest.json", "icon.svg"]
+          missing = [name for name in required if not Path(name).exists()]
+          if missing:
+              raise SystemExit(f"Missing assets: {missing}")
+          if 'id="app"' not in html:
+              raise SystemExit("Missing app root")
+          print("Parla v1.1 static checks passed")
+          PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
