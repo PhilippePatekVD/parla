@@ -117,7 +117,7 @@ mcq("Pourquoi dit-on souvent « mia madre » sans article ?",["Parce qu’il s�
 id:"u5",title:"Al bar",subtitle:"Commander, compter et payer.",objective:"Commander poliment une boisson ou un snack et comprendre un prix simple.",
 grammar:[
 {title:"Vorrei — je voudrais",body:"Vorrei est le conditionnel de volere, mais à ce niveau il faut surtout le retenir comme une formule très naturelle et polie pour commander.",examples:[["Vorrei un caffè.","Je voudrais un café."],["Vorrei due cornetti.","Je voudrais deux croissants."]]},
-{title:"Un / uno / una",body:"Un s’emploie devant la plupart des noms masculins, uno devant certains débuts comme s+consonne ou z, una devant les noms féminins.",examples:[["un caffè","un café"],["uno spremuto","un jus pressé"],["una birra","une bière"]]}
+{title:"Un / uno / una",body:"Un s’emploie devant la plupart des noms masculins, uno devant certains débuts comme s+consonne ou z, una devant les noms féminins et un’ devant une voyelle.",examples:[["un caffè","un café"],["uno spuntino","un en-cas"],["una birra","une bière"]]}
 ],
 verbs:[{name:"volere",fr:"vouloir",forms:["io voglio","tu vuoi","lui/lei vuole","noi vogliamo","voi volete","loro vogliono"],note:"Pour commander poliment : vorrei."}],
 vocab:[["caffè","café"],["acqua","eau"],["cornetto","croissant italien"],["panino","sandwich"],["vorrei","je voudrais"],["per favore","s’il vous plaît"],["quanto costa?","combien ça coûte ?"],["euro","euro"],["conto","addition"],["altro","autre"]],
@@ -127,7 +127,7 @@ listen("Sono tre euro e cinquanta.","Quel prix entendez-vous ?",["3,50 €","13,
 mcq("« Quanto costa? » signifie :",["Combien ça coûte ?","Qu’est-ce que vous prenez ?","Où est le bar ?"],"Combien ça coûte ?","Quanto = combien ; costa = coûte.","vocab")
 ],
 structure:[
-cloze("Vorrei ___ acqua, per favore.",["un","una","uno"],"una","Acqua est féminin : una acqua, généralement prononcé avec élision dans le flux oral.","grammar"),
+cloze("Vorrei ___ acqua, per favore.",["un","un’","uno"],"un’","Acqua est féminin et commence par une voyelle : una s’élide en un’.","grammar"),
 build("Construisez : « Je voudrais deux cafés, s’il vous plaît. »",["due","per","caffè","Vorrei","favore"],"Vorrei due caffè per favore","Caffè reste inchangé au pluriel.","production"),
 mcq("Laquelle est la commande la plus polie ?",["Voglio caffè.","Vorrei un caffè, per favore.","Caffè!"],"Vorrei un caffè, per favore.","Voglio est grammatical mais beaucoup plus direct dans ce contexte.","pragmatics")
 ],
