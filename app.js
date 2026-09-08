@@ -35,6 +35,21 @@ function load(){
   state.skills=state.skills||fresh().skills;
   SKILLS.forEach(k=>state.skills[k]=state.skills[k]||{correct:0,attempts:0});
   state.done=state.done||{};state.reviews=state.reviews||{};state.errors=state.errors||{};
+  Object.keys(state.reviews).forEach(id=>{
+    const card=state.reviews[id];
+    if(card && card.it && !card.front){
+      state.reviews[id]={
+        kind:"vocab",
+        front:card.it,
+        back:card.fr||"",
+        note:"",
+        audio:card.it,
+        skill:"vocab",
+        level:Number(card.level)||0,
+        due:Number(card.due)||Date.now()
+      };
+    }
+  });
   return state;
 }
 let s=load();
