@@ -4,69 +4,147 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f7">
-<meta name="description" content="Parla! — choisissez votre langue et poursuivez votre apprentissage.">
+<meta name="description" content="Parla — choisissez une langue.">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./styles.css">
-<title>Parla! — Language Hub</title>
+<title>Parla</title>
+<style>
+:root{
+  --bg:#f5f5f7;
+  --ink:#1d1d1f;
+  --muted:#6e6e73;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg)}
+body{
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+main{
+  width:min(980px,calc(100% - 32px));
+  min-height:100vh;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+}
+header{
+  height:82px;
+  display:flex;
+  align-items:center;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-.03em;
+}
+.mark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#1d1d1f;
+  color:#fff;
+  font-size:17px;
+}
+.hero{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:30px 0 84px;
+}
+h1{
+  margin:0 0 34px;
+  text-align:center;
+  font-size:clamp(38px,6vw,62px);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.selector{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.lang{
+  min-height:370px;
+  border-radius:34px;
+  background:#fff;
+  color:inherit;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  box-shadow:0 3px 14px rgba(0,0,0,.055);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.lang:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,.09);
+}
+.flag{
+  width:154px;
+  height:154px;
+  border-radius:38px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 8px 28px rgba(0,0,0,.08);
+}
+.flag.it{
+  background:linear-gradient(90deg,#159447 0 33.333%,#fff 33.333% 66.666%,#d9363e 66.666%);
+}
+.flag.de{
+  background:linear-gradient(#111 0 33.333%,#d71920 33.333% 66.666%,#f6c343 66.666%);
+}
+.lang strong{
+  font-size:31px;
+  letter-spacing:-.045em;
+}
+.lang span{
+  margin-top:-14px;
+  color:var(--muted);
+  font-size:12px;
+}
+@media(max-width:680px){
+  main{width:min(100% - 24px,520px)}
+  header{height:70px}
+  .hero{justify-content:flex-start;padding:50px 0 44px}
+  h1{font-size:42px;margin-bottom:26px}
+  .selector{grid-template-columns:1fr;gap:14px}
+  .lang{min-height:250px;border-radius:28px;gap:18px}
+  .flag{width:118px;height:118px;border-radius:30px}
+  .lang strong{font-size:27px}
+}
+</style>
 </head>
 <body>
-<main class="hub">
-  <header class="hub-top">
-    <div class="brand"><div class="mark">P</div><div><b>Parla!</b><span>Language Hub</span></div></div>
-    <div class="local">100 % local · 0 CHF</div>
+<main>
+  <header>
+    <div class="brand"><div class="mark">P</div><div>Parla</div></div>
   </header>
 
   <section class="hero">
-    <div class="eyebrow">Apprentissage des langues</div>
-    <h1>Une méthode.<br>Deux langues.</h1>
-    <p>Choisis ton parcours et reprends exactement là où tu t’étais arrêté. Chaque langue conserve sa progression, ses erreurs et ses révisions indépendamment.</p>
+    <h1>Choisis une langue</h1>
+
+    <div class="selector">
+      <a class="lang" href="./italiano/" aria-label="Ouvrir le cours d’italien">
+        <div class="flag it" aria-hidden="true"></div>
+        <strong>Italien</strong>
+        <span>Parla! Italiano Coach</span>
+      </a>
+
+      <a class="lang" href="./deutsch/" aria-label="Ouvrir le cours d’allemand">
+        <div class="flag de" aria-hidden="true"></div>
+        <strong>Allemand</strong>
+        <span>Sprich! Deutsch Coach</span>
+      </a>
+    </div>
   </section>
-
-  <section class="languages">
-    <a class="language-card italian" href="./italiano/">
-      <div class="card-head"><div class="flag">IT</div><span class="badge">A1 · 12 unités</span></div>
-      <div>
-        <div class="kicker">Italiano</div>
-        <h2>Parla!</h2>
-        <p>Grammaire, conjugaison, phrases, compréhension et production progressive.</p>
-      </div>
-      <div class="progress"><span id="itProgress" style="width:0%"></span></div>
-      <div class="metrics">
-        <div><b id="itPct">0 %</b><span>progression</span></div>
-        <div><b id="itXp">0</b><span>XP</span></div>
-        <div><b id="itStreak">0 j</b><span>série</span></div>
-        <div><b id="itDue">0</b><span>révisions</span></div>
-      </div>
-      <div class="open">Continuer en italien <span>→</span></div>
-    </a>
-
-    <a class="language-card german" href="./deutsch/">
-      <div class="card-head"><div class="flag de">DE</div><span class="badge">A1 · 12 unités</span></div>
-      <div>
-        <div class="kicker">Deutsch</div>
-        <h2>Sprich!</h2>
-        <p>Ordre des mots, articles, cas, verbes séparables, modaux et Perfekt.</p>
-      </div>
-      <div class="progress"><span id="deProgress" style="width:0%"></span></div>
-      <div class="metrics">
-        <div><b id="dePct">0 %</b><span>progression</span></div>
-        <div><b id="deXp">0</b><span>XP</span></div>
-        <div><b id="deStreak">0 j</b><span>série</span></div>
-        <div><b id="deDue">0</b><span>révisions</span></div>
-      </div>
-      <div class="open">Continuer en allemand <span>→</span></div>
-    </a>
-  </section>
-
-  <section class="principles">
-    <div><b>Découvrir</b><span>Comprendre la structure avant de mémoriser.</span></div>
-    <div><b>Construire</b><span>Manipuler immédiatement grammaire et conjugaison.</span></div>
-    <div><b>Parler</b><span>Produire des phrases et réagir en situation.</span></div>
-    <div><b>Réviser</b><span>Faire revenir les notions qui posent réellement problème.</span></div>
-  </section>
-
-  <footer>Parla! · apprentissage local · aucune API payante · données conservées sur cet appareil</footer>
 </main>
-<script src="./hub.js"></script>
 </body>
 </html>
