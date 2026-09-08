@@ -1,5 +1,5 @@
 {
-  "name": "Parla! — Italiano Coach",
+  "name": "Parla! — Italiano Coach A1",
   "short_name": "Parla!",
   "start_url": "./",
   "scope": "./",
@@ -18,5 +18,6 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "description": "Cours d'italien A1 progressif : grammaire, conjugaison, phrases, écoute et révisions."
 }
