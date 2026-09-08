@@ -159,7 +159,7 @@ mcq("Pourquoi dit-on « einen Kaffee » ?",["Parce que Kaffee est masculin à l�
 structure:[
 cloze("Ich möchte ___ Tee.",["ein","einen","eine"],"einen","Tee est masculin : einen Tee.","grammar"),
 cloze("Sie nimmt ___ Suppe.",["eine","einen","ein"],"eine","Suppe est féminin : eine reste une à l’accusatif.","grammar"),
-build("Construisez : « Nous voudrions payer, s’il vous plaît. »",["bitte","möchten","Wir","zahlen"],"Wir möchten zahlen bitte","La structure essentielle est wir möchten + infinitif.","production")
+build("Construisez : « Nous voudrions payer, s’il vous plaît. »",["bitte","möchten","Wir","zahlen"],"Wir möchten bitte zahlen","La structure essentielle est wir möchten + infinitif.","production")
 ],
 dialogue:[
 dialogue(["Kellner: Noch etwas?","Sie: ..."],"Vous ne voulez rien d’autre.",["Nein, danke. Das ist alles.","Ich bin Frankreich.","Links, bitte."],"Nein, danke. Das ist alles.","Das ist alles = c’est tout.","production"),
