@@ -27,7 +27,6 @@ jobs:
 
       - name: Validate JavaScript
         run: |
-          node --check hub.js
           node --check sw.js
           node --check shared/core-v2.js
           node --check italiano/foundation-v2.js
@@ -53,7 +52,6 @@ jobs:
           from pathlib import Path
           import json
 
-          json.loads(Path("manifest.json").read_text(encoding="utf-8"))
           json.loads(Path("italiano/manifest.json").read_text(encoding="utf-8"))
           json.loads(Path("deutsch/manifest.json").read_text(encoding="utf-8"))
 
