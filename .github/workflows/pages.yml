@@ -25,33 +25,45 @@ jobs:
         uses: actions/checkout@v6
       - name: Validate application
         run: |
-          node --check curriculum.js
-          node --check app.js
+          node --check hub.js
           node --check sw.js
+          node --check italiano/curriculum.js
+          node --check italiano/app.js
+          node --check italiano/sw.js
           node --check deutsch/curriculum.js
           node --check deutsch/app.js
           node --check deutsch/sw.js
           python - <<'PY'
           from pathlib import Path
           import json
-          import re
 
           json.loads(Path("manifest.json").read_text(encoding="utf-8"))
+          json.loads(Path("italiano/manifest.json").read_text(encoding="utf-8"))
           json.loads(Path("deutsch/manifest.json").read_text(encoding="utf-8"))
 
-          apps = {
-              "Parla": Path("."),
-              "Sprich": Path("deutsch"),
-          }
-          required = ["index.html", "styles.css", "curriculum.js", "app.js", "manifest.json", "icon.svg", "sw.js"]
-          for name, root in apps.items():
-              missing = [asset for asset in required if not (root / asset).exists()]
+          hub_required = ["index.html", "styles.css", "hub.js", "manifest.json", "icon.svg", "sw.js"]
+          missing = [asset for asset in hub_required if not Path(asset).exists()]
+          if missing:
+              raise SystemExit(f"Hub: missing assets {missing}")
+
+          hub_html = Path("index.html").read_text(encoding="utf-8")
+          for route in ("./italiano/", "./deutsch/"):
+              if route not in hub_html:
+                  raise SystemExit(f"Hub: missing route {route}")
+
+          app_required = ["index.html", "styles.css", "curriculum.js", "app.js", "manifest.json", "icon.svg", "sw.js"]
+          for name, root in {"Italiano": Path("italiano"), "Deutsch": Path("deutsch")}.items():
+              missing = [asset for asset in app_required if not (root / asset).exists()]
               if missing:
                   raise SystemExit(f"{name}: missing assets {missing}")
               html = (root / "index.html").read_text(encoding="utf-8")
               if 'id="app"' not in html:
                   raise SystemExit(f"{name}: missing app root")
-          print("Parla + Sprich static checks passed")
+              app = (root / "app.js").read_text(encoding="utf-8")
+              if 'href="../"' not in app or "Langues" not in app:
+                  raise SystemExit(f"{name}: missing quick hub link")
+
+          print("Parla Hub + Italiano + Deutsch static checks passed")
           PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
