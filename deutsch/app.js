@@ -114,7 +114,7 @@ function nextLesson(){
 function top(active){
   return '<header class="top"><div class="brand"><div class="logo">S</div><div><b>Sprich!</b><small>Deutsch Coach · A1</small></div></div><nav class="nav">'+
   [["home","Accueil"],["course","Parcours"],["grammar","Grammaire"],["vocab","Vocabulaire"],["review","Révisions"+(dueIds().length?" · "+dueIds().length:"")],["data","Données"]]
-  .map(x=>'<button data-view="'+x[0]+'" class="'+(active===x[0]?"on":"")+'">'+x[1]+'</button>').join("")+'</nav></header>';
+  .map(x=>'<button data-view="'+x[0]+'" class="'+(active===x[0]?"on":"")+'">'+x[1]+'</button>').join("")+'<a class="hub-link" href="../">Langues</a></nav></header>';
 }
 function bindNav(){
   document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>render(b.dataset.view));
