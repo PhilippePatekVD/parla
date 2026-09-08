@@ -1,7 +1,7 @@
 {
-  "name": "Sprich! Deutsch — Fondations à A2",
+  "name": "Sprich! Deutsch — A1",
   "short_name": "Sprich! Deutsch",
-  "description": "Cours structuré d'allemand : immersion, ordre des mots, articles, cas, conjugaison, exercices, production et révisions.",
+  "description": "Cours A1 d'allemand structuré : immersion, ordre des mots, articles, cas, conjugaison, écoute, production et révisions.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
