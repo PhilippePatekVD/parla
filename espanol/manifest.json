@@ -1,0 +1,21 @@
+{
+  "name": "¡Habla! Español — A1",
+  "short_name": "¡Habla! Español",
+  "description": "Cours A1 d’espagnol structuré : immersion, grammaire, conjugaison, articles, écoute, production et révisions.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f5f5f7",
+  "lang": "fr",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
