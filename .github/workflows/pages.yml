@@ -37,6 +37,15 @@ jobs:
           node --check deutsch/a1-v2.js
           node --check deutsch/course-v2.js
           node --check deutsch/sw.js
+          node --check english/foundation-v2.js
+          node --check english/a1-v2.js
+          node --check english/course-v2.js
+          node --check english/sw.js
+          node --check espanol/foundation-v2.js
+          node --check espanol/a1-v2.js
+          node --check espanol/course-v2.js
+          node --check espanol/prepare-v2.js
+          node --check espanol/sw.js
           node --check scripts/validate-courses.js
 
       - name: Validate curricula
@@ -48,11 +57,18 @@ jobs:
           from pathlib import Path
           import json
 
-          json.loads(Path("italiano/manifest.json").read_text(encoding="utf-8"))
-          json.loads(Path("deutsch/manifest.json").read_text(encoding="utf-8"))
+          apps = {
+              "Italiano": Path("italiano"),
+              "Deutsch": Path("deutsch"),
+              "English": Path("english"),
+              "Español": Path("espanol"),
+          }
+
+          for root in apps.values():
+              json.loads((root / "manifest.json").read_text(encoding="utf-8"))
 
           hub = Path("index.html").read_text(encoding="utf-8")
-          for route in ("./italiano/", "./deutsch/"):
+          for route in ("./italiano/", "./deutsch/", "./english/", "./espanol/"):
               if route not in hub:
                   raise SystemExit(f"Hub missing route {route}")
 
@@ -63,7 +79,7 @@ jobs:
           required = ["index.html","foundation-v2.js","a1-v2.js","course-v2.js","manifest.json","icon.svg","sw.js"]
           loaded = ["foundation-v2.js","a1-v2.js","course-v2.js","../shared/core-v2.js","../shared/styles-v2.css"]
 
-          for name, root in {"Italiano": Path("italiano"), "Deutsch": Path("deutsch")}.items():
+          for name, root in apps.items():
               missing = [asset for asset in required if not (root / asset).exists()]
               if missing:
                   raise SystemExit(f"{name}: missing assets {missing}")
@@ -76,7 +92,10 @@ jobs:
               if "a2-v2.js" in html:
                   raise SystemExit(f"{name}: A2 must not be loaded during A1 phase")
 
-          print("Parla Hub + Italiano A1 + Deutsch A1 static checks passed")
+          if "prepare-v2.js" not in (Path("espanol") / "index.html").read_text(encoding="utf-8"):
+              raise SystemExit("Español: prepare-v2.js not loaded")
+
+          print("Parla Hub + 4 A1 language applications static checks passed")
           PY
 
       - name: Configure Pages
