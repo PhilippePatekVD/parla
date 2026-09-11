@@ -1,6 +1,6 @@
-const CACHE="parla-es-v2.0.0";
+const CACHE="parla-es-v2.0.1";
 const ASSETS=[
-  "./","./index.html","./foundation-v2.js","./a1-v2.js","./course-v2.js",
+  "./","./index.html","./foundation-v2.js","./a1-v2.js","./course-v2.js","./prepare-v2.js",
   "../shared/styles-v2.css","../shared/core-v2.js","./manifest.json","./icon.svg"
 ];
 self.addEventListener("install",event=>{
