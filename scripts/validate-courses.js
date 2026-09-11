@@ -1,17 +1,26 @@
 const fs=require("fs");
 const vm=require("vm");
 
-function loadLanguage(folder, foundationGlobal, a1Global){
+const LANGUAGES=[
+  {name:"Italiano",folder:"italiano",foundation:"IT_FOUNDATION",a1:"IT_A1"},
+  {name:"Deutsch",folder:"deutsch",foundation:"DE_FOUNDATION",a1:"DE_A1"},
+  {name:"English",folder:"english",foundation:"EN_FOUNDATION",a1:"EN_A1"},
+  {name:"Español",folder:"espanol",foundation:"ES_FOUNDATION",a1:"ES_A1",prepare:"prepare-v2.js"}
+];
+
+function loadLanguage(cfg){
   const context={window:{}};
   vm.createContext(context);
-  for(const file of ["foundation-v2.js","a1-v2.js","course-v2.js"]){
-    const code=fs.readFileSync(folder+"/"+file,"utf8");
-    vm.runInContext(code,context,{filename:folder+"/"+file});
+  const files=["foundation-v2.js","a1-v2.js","course-v2.js"];
+  if(cfg.prepare)files.push(cfg.prepare);
+  for(const file of files){
+    const code=fs.readFileSync(cfg.folder+"/"+file,"utf8");
+    vm.runInContext(code,context,{filename:cfg.folder+"/"+file});
   }
   const course=context.window.PARLA_COURSE;
-  if(!course)throw new Error(folder+": PARLA_COURSE absent");
-  if(!context.window[foundationGlobal])throw new Error(folder+": fondations absentes");
-  if(!context.window[a1Global])throw new Error(folder+": A1 absent");
+  if(!course)throw new Error(cfg.folder+": PARLA_COURSE absent");
+  if(!context.window[cfg.foundation])throw new Error(cfg.folder+": fondations absentes");
+  if(!context.window[cfg.a1])throw new Error(cfg.folder+": A1 absent");
   return course;
 }
 
@@ -21,7 +30,8 @@ function estimateBank(unit){
   const phrases=(unit.phrases||[]).length;
   const verbForms=(unit.verbs||[]).reduce((n,v)=>n+Object.keys(v.forms||{}).length,0);
   const drills=(unit.drills||[]).length;
-  return vocab*4+articleVocab+phrases*5+verbForms*2+drills;
+  const encounter=(unit.encounter?.prompts||[]).length;
+  return vocab*4+articleVocab+phrases*5+verbForms*2+drills+encounter;
 }
 
 function validateCourse(name,course){
@@ -55,8 +65,5 @@ function validateCourse(name,course){
   console.log(name+": "+units.length+" unités · ~"+totalEstimate+" variantes d'épreuves générables");
 }
 
-const italiano=loadLanguage("italiano","IT_FOUNDATION","IT_A1");
-const deutsch=loadLanguage("deutsch","DE_FOUNDATION","DE_A1");
-validateCourse("Italiano",italiano);
-validateCourse("Deutsch",deutsch);
-console.log("Validation pédagogique A1 réussie.");
+for(const cfg of LANGUAGES)validateCourse(cfg.name,loadLanguage(cfg));
+console.log("Validation pédagogique A1 réussie pour 4 langues.");
